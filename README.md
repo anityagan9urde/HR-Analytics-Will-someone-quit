@@ -11,15 +11,15 @@
 
 ### Running the project:
 
-##### Open CMD. Ensure that you are in the project home directory. Create the machine learning model by running [SVM.py]#SVM.py as such:
+##### Open CMD. Ensure that you are in the project home directory. Create the machine learning model by running [SVM.py](https://github.com/AnityaGan9urde/HR-Analytics-Will-someone-quit/edit/main/SVM.py) as such:
 
 `python SVM.py`
 
 ##### This would create a serialized version of our model into a file svm_model.pkl
 
-##### Run [Employee.py]#Employee.py using below command to start Flask API
+##### Run [Employee_api.py](https://github.com/AnityaGan9urde/HR-Analytics-Will-someone-quit/edit/main/Employee_api.py) using below command to start Flask API
 
-`python Employee.py`
+`python Employee_api.py`
 
 ##### By default, flask will run on port 5000.
 
