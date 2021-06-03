@@ -5,48 +5,48 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
 
-hr = pd.read_csv("aug_train.csv")
-hr.isna().sum()/len(hr)
-hr_train = hr.fillna(0)
+df = pd.read_csv("aug_train.csv")
+df.isna().sum()/len(df)
+df_train = df.fillna(0)
 
-hr_train['relevent_experience'] = hr_train['relevent_experience'].replace('Has relevent experience',1)
-hr_train['relevent_experience'] = hr_train['relevent_experience'].replace('No relevent experience',0)
+df_train['relevent_experience'] = df_train['relevent_experience'].replace('Has relevent experience',1)
+df_train['relevent_experience'] = df_train['relevent_experience'].replace('No relevent experience',0)
 
 from sklearn.preprocessing import OrdinalEncoder
 
-edu_lv = [0,'Primary School','High School','Graduate','Masters','Phd']
-uni = [0,'no_enrollment', 'Part time course', 'Full time course']
-comp_size = [0,'<10','10/49','50-99','100-500','500-999','1000-4999','5000-9999','10000+']
+education = [0,'Primary School','High School','Graduate','Masters','Phd']
+university = [0,'no_enrollment', 'Part time course', 'Full time course']
+company = [0,'<10','10/49','50-99','100-500','500-999','1000-4999','5000-9999','10000+']
 
-enc = OrdinalEncoder(categories=[uni])
-ordi1 = pd.DataFrame(enc.fit_transform(hr_train[["enrolled_university"]]))
-ordi1 = ordi1.rename(columns={0:"University"})
+enc = OrdinalEncoder(categories=[university])
+ordinal_1 = pd.DataFrame(enc.fit_transform(df_train[["enrolled_university"]]))
+ordi1 = ordinal_1.rename(columns={0:"University"})
 
-enc = OrdinalEncoder(categories=[edu_lv])
-ordi2 = pd.DataFrame(enc.fit_transform(hr_train[["education_level"]]))
-ordi2 = ordi2.rename(columns={0:"Education level"})
+enc = OrdinalEncoder(categories=[education])
+ordinal_2 = pd.DataFrame(enc.fit_transform(df_train[["education_level"]]))
+ordi2 = ordinal_2.rename(columns={0:"Education level"})
 
-enc = OrdinalEncoder(categories=[comp_size])
-ordi3 = pd.DataFrame(enc.fit_transform(hr_train[["company_size"]]))
-ordi3 = ordi3.rename(columns={0:"Company size"})
+enc = OrdinalEncoder(categories=[company])
+ordinal_3 = pd.DataFrame(enc.fit_transform(df_train[["company_size"]]))
+ordi3 = ordinal_3.rename(columns={0:"Company size"})
 
-hr_train= pd.get_dummies(hr_train, columns=['gender', 'major_discipline', 'company_type'])
-hr_train['experience'] = hr_train['experience'].replace('>20',21)
-hr_train['experience'] = hr_train['experience'].replace('<1',0.5)
-hr_train['last_new_job'] = hr_train['last_new_job'].replace('>4',5)
-hr_train['last_new_job'] = hr_train['last_new_job'].replace('never',0)
+df_train= pd.get_dummies(df_train, columns=['gender', 'major_discipline', 'company_type'])
+df_train['experience'] = df_train['experience'].replace('>20',21)
+df_train['experience'] = df_train['experience'].replace('<1',0.5)
+df_train['last_new_job'] = df_train['last_new_job'].replace('>4',5)
+df_train['last_new_job'] = df_train['last_new_job'].replace('never',0)
 
-hr_train = hr_train.drop(columns=['enrollee_id',
+df_train = df_train.drop(columns=['enrollee_id',
                        'enrolled_university',
                        'education_level',
                        'company_size',
                        'target',
                        'city'])
 
-X = pd.concat([hr_train, ordi1, ordi2, ordi3], axis=1)
+X = pd.concat([df_train, ordinal_1, ordinal_2, ordinal_3], axis=1)
 
 from sklearn.model_selection import train_test_split
-X_train, X_val, y_train, y_val = train_test_split(X, hr['target'], test_size = 0.2, random_state=46)
+X_train, X_val, y_train, y_val = train_test_split(X, df['target'], test_size = 0.2, random_state=46)
 
 from sklearn.svm import SVC
 svclassifier = SVC(C=411)#C selected on the basis of trial and error
@@ -57,12 +57,15 @@ y_pred = svclassifier.predict(X_val)
 from sklearn.metrics import classification_report
 print(classification_report(y_val, y_pred))
 
-import joblib
-joblib.dump(svclassifier, 'svm_model.pkl')
+#To save the model locally before running the api:
 
-regressor = joblib.load('svm_model.pkl')
+import joblib
+joblib.dump(svc, 'svm_model.pkl')
+
+svc = joblib.load('svm_model.pkl')
 
 model_columns = list(X.columns)
 joblib.dump(model_columns, 'model_columns.pkl')
+
 print("Model Trained!!")
 
