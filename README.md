@@ -1,1 +1,1 @@
-# HR-Analytics-Will-someone-quit
+# HR-Analytics: Predict whether someone will quit the job
