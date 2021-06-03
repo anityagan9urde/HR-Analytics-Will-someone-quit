@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title>ML API</title>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href='{{ url_for('static', filename='css/style.css') }}'}">
+    </head>
+    <body>
+        <div class="login">
+            <h1 align="center">HR Analytics: Predict who will leave the company</h1>
+            <form action="{{ url_for('predict')}}"method="post">
+                <table border="0" cellpadding="5" cellspacing="0" align="center">
+                    <tr> <td style="width: 50%" align="center">
+                    <label for="enrollee_id"><b>Enrollee ID</b></label><br />
+                    <input name="enrollee_id" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    </td> <td style="width: 50%" align="center">
+                    <label for="city"><b>City</b></label><br />
+                    <input name="city" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="city_development_index"><b>City Development Index (0-1)</b></label><br />
+                    <input name="city_development_index" type="text" maxlength="100" value="0." style="width:100%;max-width: 535px" />
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="training_hours"><b>Employee Gender</b></label><br />
+                    <select name = 'gender'>
+                    <option value=”Male”>Male</option>
+                    <option value=”Female”>Female</option>
+                    <option value=”Other”>Other</option>
+                    <option value=”NaN”>NaN</option>
+                    </select>
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="training_hours"><b>Do they have relevant experience?</b></label><br />
+                    <select name = 'relevent_experience'>
+                    <option value=”exp”>Has relevant experience</option>
+                    <option value=”noexp”>No relevant experience</option>
+                    </select>
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="training_hours"><b>Are they studying?</b></label><br />
+                    <select name = 'enrolled_university'>
+                    <option value=””>Full time course</option>
+                    <option value=””>Part time course</option>
+                    <option value=””>no_enrollment</option>
+                    <option value=””>nan</option>
+                    </select>
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="training_hours"><b>Education level</b></label><br />
+                    <select name = 'education_level'>
+                    <option value=”Primary”>Primary School</option>
+                    <option value=”High”>High School</option>
+                    <option value=”Graduate”>Graduate</option>
+                    <option value=”Masters”>Masters</option>
+                    <option value='Phd'>Phd</option>
+                    <option value='nan'>nan</option>
+                    </select>
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="training_hours"><b>Degree (if any)</b></label><br />
+                    <select name = 'major_discipline'>
+                    <option value=”STEM”>STEM</option>
+                    <option value=”Business”>Business Degree</option>
+                    <option value=”Humanities”>Humanities</option>
+                    <option value=”Arts”>Arts</option>
+                    <option value='No'>No Major</option>
+                    <option value='nan'>nan</option>
+                    </select>
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="company_size"><b>Size of the company</b></label><br />
+                    <select name="company_size">
+                    <option value=””><10</option>
+                    <option value=””>10-49</option>
+                    <option value=””>50-99</option>
+                    <option value=””>100-500</option>
+                    <option value=””>500-999</option>
+                    <option value=””>1000-4999</option>
+                    <option value=””>5000-9999</option>
+                    <option value=””>10000+</option>
+                    <option value=””>nan</option>
+                    </select>
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="company_type"><b>Type of current employer</b></label><br />
+                    <select name="company_type">
+                    <option value=”Pvt”>Pvt Ltd</option>
+                    <option value=”Public”>Public Sector</option>
+                    <option value=””>Funded Startup</option>
+                    <option value=””>Early Stage Startup</option>
+                    <option value=””>NGO</option>
+                    <option value=””>Other</option>
+                    <option value=””>nan</option>
+                    </select>
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="experience"><b>How much experience do they have?</b></label><br />
+                    <input name="experience" type="text" maxlength="3" value="" style="width:100%;max-width: 535px" />
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="last_new_job"><b>Difference in years b/w previous and current job</b></label><br />
+                    <input name="last_new_job" type="text" maxlength="3" style="width:100%;max-width: 535px" />
+                    </td> </tr> <tr> <td colspan="2" align="center">
+                    <label for="training_hours"><b>Training hours completed on company courses</b></label><br />
+                    <input name="training_hours" type="text" maxlength="3" style="width:100%;max-width: 260px" />
+                    </td> </tr>
+                </table>
+                <br>
+                <br>
+                <center>
+                <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                </center>
+            </form>
+            <br>
+            <br>
+            <center>
+            {{ prediction_text }}
+            </center>
+        </div>
+    </body>
+</html>
