@@ -49,7 +49,7 @@ from sklearn.model_selection import train_test_split
 X_train, X_val, y_train, y_val = train_test_split(X, df['target'], test_size = 0.2, random_state=46)
 
 from sklearn.svm import SVC
-svclassifier = SVC(C=411)#C selected on the basis of trial and error
+svclassifier = SVC(kernel='rbf', C=411)#C selected on the basis of trial and error
 svclassifier.fit(X_train, y_train)
 
 y_pred = svclassifier.predict(X_val)
@@ -60,9 +60,9 @@ print(classification_report(y_val, y_pred))
 #To save the model locally before running the api:
 
 import joblib
-joblib.dump(svc, 'svm_model.pkl')
+joblib.dump(svclassifier, 'svm_model.pkl')
 
-svc = joblib.load('svm_model.pkl')
+svclassifier = joblib.load('svm_model.pkl')
 
 model_columns = list(X.columns)
 joblib.dump(model_columns, 'model_columns.pkl')
