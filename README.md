@@ -1,5 +1,5 @@
 # HR-Analytics: Predict whether someone will quit the job
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy/would-you-survive-the-titanic-)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy/hr-analytics-will-someone-quit)
 
 * Following image shows the Flask api which contains the form to fill up the employee information:
 
