@@ -1,4 +1,4 @@
-# HR-Analytics: Predict whether someone will quit the job
+# HR-Analytics: Predict whether someone will quit the job- SVM model to determine if someone is bound to leave or not
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://hr-analytics-will-someone-quit.herokuapp.com)
 
 * Following image shows the Flask api which contains the form to fill up the employee information:
@@ -10,7 +10,7 @@
 ![Annotation 2021-06-03 162648](https://user-images.githubusercontent.com/68852047/120635186-cfc09300-c489-11eb-9c7e-a825d0d6c310.png)
 
 
-### Running the project:
+### Running the project locally:
 
 ##### Open CMD. Ensure that you are in the project home directory. Create the machine learning model by running [SVM.py](https://github.com/AnityaGan9urde/HR-Analytics-Will-someone-quit/edit/main/SVM.py) as such:
 
