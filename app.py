@@ -6,6 +6,7 @@ import joblib
 
 app = Flask(__name__)
 svc = joblib.load('svm_model.pkl')
+model_columns = joblib.load("model_columns.pkl")
 
 @app.route('/')
 def home():
