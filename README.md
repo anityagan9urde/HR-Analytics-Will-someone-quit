@@ -1,4 +1,6 @@
-# HR-Analytics: Predict whether someone will quit the job- SVM model to determine if someone is bound to leave or not
+# HR-Analytics: Predict whether someone will quit the job
+- SVM model to determine if someone is bound to leave or not provided their background.
+- Deploy the model with one click. Type the information of an employee and see if they will leave their current job.
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://hr-analytics-will-someone-quit.herokuapp.com)
 
 * Following image shows the Flask api which contains the form to fill up the employee information:
