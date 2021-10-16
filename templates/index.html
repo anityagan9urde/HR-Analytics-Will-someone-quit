@@ -137,6 +137,12 @@ background: #109177;
 <body>
 <div class="login form-style-5">
 <h1 align="center">HR Analytics: Predict who will leave the company (with an accuracy of 75.18%)</h1>
+<center>
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Prediction:</strong> {{prediction_text}}
+</div>
+</center>
 <form action="{{ url_for('predict')}}"method="post">
 <table border="0" cellpadding="5" cellspacing="50" align="center">
 
@@ -247,12 +253,6 @@ background: #109177;
 </center>
 </form>
 <br>
-<center>
-<div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  <strong>Prediction:</strong> {{prediction_text}}
-</div>
-</center>
 </div>
 </body>
 </html>
