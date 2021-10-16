@@ -10,6 +10,7 @@
 * This image shows the results displayed:
 
 ![Annotation 2021-06-03 162648](https://user-images.githubusercontent.com/68852047/120635186-cfc09300-c489-11eb-9c7e-a825d0d6c310.png)
+> Help if you can: I'm trying to show the results as a dialog box which floats in the middle after hitting 'Predict' but till now no luck. 
 
 
 ### Running the project locally:
