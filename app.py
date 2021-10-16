@@ -51,8 +51,7 @@ def predict():
 
         df_train = pd.get_dummies(df_train, columns=['gender', 'major_discipline', 'company_type'])
 
-        df_train = df_train.drop(columns=['enrollee_id',
-                                       'enrolled_university',
+        df_train = df_train.drop(columns=['enrolled_university',
                                        'education_level',
                                        'company_size',
                                        'city'])

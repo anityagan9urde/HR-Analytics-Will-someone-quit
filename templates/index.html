@@ -136,13 +136,9 @@ background: #109177;
 </head>
 <body>
 <div class="login form-style-5">
-<h1 align="center">HR Analytics: Predict who will leave the company</h1>
+<h1 align="center">HR Analytics: Predict who will leave the company (with an accuracy of 75.18%)</h1>
 <form action="{{ url_for('predict')}}"method="post">
 <table border="0" cellpadding="5" cellspacing="50" align="center">
-<tr> <td style="width: 50%" align="center">
-<label for="enrollee_id"><b>Enrollee ID</b></label><br />
-<input name="enrollee_id" type="text" maxlength="50" style="width:100%;max-width: 260px" required>
-</td> </tr>
 
 <tr> <td style="width: 50%" align="center">
 <label for="city"><b>City</b></label><br />
@@ -209,7 +205,7 @@ background: #109177;
 </td> </tr>
 
 <tr> <td colspan="2" align="center">
-<label for="company_size"><b>Size of the company</b></label><br />
+<label for="company_size"><b>Size of the current company</b></label><br />
 <select name="company_size">
 <option value="<10"><10</option>
 <option value="10/49">10-49</option>
@@ -240,7 +236,7 @@ background: #109177;
 </td> </tr>
 
 <tr> <td colspan="2" align="center">
-<label for="training_hours"><b>Training hours completed on company courses</b></label><br />
+<label for="training_hours"><b>Training hours completed on company</b></label><br />
 <input name="training_hours" type="text" maxlength="50" style="width:100%;max-width: 260px" />
 </td> </tr>
 </table>

@@ -1,8 +1,6 @@
 #This python file will create a model and save it locally
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import joblib
 
 df = pd.read_csv("aug_train.csv")
@@ -54,8 +52,8 @@ svclassifier.fit(X_train, y_train)
 
 y_pred = svclassifier.predict(X_val)
 
-from sklearn.metrics import classification_report
-print(classification_report(y_val, y_pred))
+from sklearn.metrics import accuracy_score
+print(accuracy_score(y_val, y_pred))
 
 #To save the model locally before running the api:
 
