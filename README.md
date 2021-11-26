@@ -80,7 +80,7 @@
 - I have also connected a **HTML** form to the flask app to take in user input and a **CSS** file to decorate it.<br>
 ### <h3 id="deployment">Deployment:</h3>
 - The Flask API was deployed on the **Heroku** cloud platform so that anyone with the link to the app can access it online.
-- I have connected this GitHub repository to the Heroku dyno so that it can be run on the cloud.
+- I have connected this GitHub repository to Heroku so that it can be run on the Heroku dyno.
 - I have used the **Gunicorn** package which lets Python applications run on any web server. The `Procfile` and `requirements.txt` should be defined with all the details required before the deployment.<br>
 ### <h3 id="learn">What did I learn:</h3>
 - *Data Wrangling* using **Pandas**
