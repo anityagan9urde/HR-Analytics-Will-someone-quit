@@ -1,5 +1,11 @@
-# HR-Analytics: Predict whether someone will quit the job
+# <h1 id="top">HR-Analytics: Predict whether someone will quit the job</h1>
 - This is a Flask API developed by me to determine if a Data Scientist would leave their current job provided their previous information.
+- Contents:
+  - <a href="#dataset">Dataset</a>
+  - <a href="#model">Model Used</a>
+  - <a href="#api">API</a>
+  - <a href="#deployment">Deployment</a>
+  - <a href="#learn">What did I learn</a>
 > Deploy the API on Heroku by clicking the button below.<br><br> 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://hr-analytics-will-someone-quit.herokuapp.com)
 
@@ -18,12 +24,12 @@
 ##### - Open any browser and paste this URL: http://localhost:5000 to run the file as an app.
 <hr>
 
-### Following images show how the API will look when run properly:<br><br>  
-<img src="https://user-images.githubusercontent.com/68852047/120635173-cb947580-c489-11eb-9e0d-5907ca7de54c.png" style="width: 750px"></img><br>
-<img src="https://user-images.githubusercontent.com/68852047/120635186-cfc09300-c489-11eb-9c7e-a825d0d6c310.png" style="width: 750px"></img>
+#### Following images show how the API will look when run properly:<br>
+<img src="https://user-images.githubusercontent.com/68852047/120635173-cb947580-c489-11eb-9e0d-5907ca7de54c.png" style="width: 650px"></img><hr size=0.1>
+<img src="https://user-images.githubusercontent.com/68852047/120635186-cfc09300-c489-11eb-9c7e-a825d0d6c310.png" style="width: 650px"></img>
 <hr>
 
-### Dataset:
+### <h3 id="dataset">Dataset:</h3>
 - The dataset used for training the SVM model was taken from Kaggle.
 - Link: HR Analytics: Job Change of Data Scientists: https://www.kaggle.com/arashnic/hr-analytics-job-change-of-data-scientists
 - Features:
@@ -43,40 +49,40 @@
 - Target: 
   - 0 : Not looking for job change, 
   - 1 : Looking for a job change<br>
-### Model Used:
+### <h3 id="model">Model Used:</h3>
 - The dataset shows that this is clearly a **classification** task and can be solved by a myriad of classification algorithms such as Logistic Regression, Decision Trees and even Random Forests.
 - I chose **Support Vector Machines(SVMs)** because of the flexibility it shows during training.
 - After implementing **Cross Validation using StratifiedKFold** and doing parameter search using **Grid Search CV** on both **SVM** and **Random Forest**, I found out that the **SVM** *performed slightly better* in understanding the correlation between the features and the target.
 - Following is the table for their individual scores.  
 
-| **Scoring Parameter** | **Random Forest** | **SVM** |  
-|:-------------------:|:---------------:|:-----:|  
-| *Accuracy* | 0.77 | 0.77 |  
-| *Precision(wgt)* | 0.75 | 0.75 |  
-| *Recall(wgt)* | 0.77 | 0.77 |  
-| *F1-score(wgt)* | 0.75 | 0.76 |  
+>| **Scoring Parameter** | **Random Forest** | **SVM** |  
+>|:-------------------:|:---------------:|:-----:|  
+>| *Accuracy* | 0.77 | 0.77 |  
+>| *Precision(wgt)* | 0.75 | 0.75 |  
+>| *Recall(wgt)* | 0.77 | 0.77 |  
+>| *F1-score(wgt)* | 0.75 | 0.76 |  
 
 - Recall for each class:
 
-| **Classes** | **Random Forest** | **SVM** |
-|:----:|:---:|:---:|
-| 0 | 0.92 | 0.90 |
-| 1 | 0.32 | 0.38 |
+>| **Classes** | **Random Forest** | **SVM** |
+>|:----:|:---:|:---:|
+>| 0 | 0.92 | 0.90 |
+>| 1 | 0.32 | 0.38 |
 
 - Hyper Parameters chosen for:
   - **SVM**: {'C': 411, 'kernel': 'rbf'}
   - **Random Forest**: {'criterion': 'entropy', 'max_depth': 9, 'max_features': 'sqrt', 'n_estimators': 425}
 - Provided the dataset was slightly unbalanced, the SVM model gave a better Recall score for the negative classes as compared to Random Forest. 
 - Hence, I chose SVM as the model to use for the API.<br>
-### API:
+### <h3 id="api">API:</h3>
 - I have made an *API for the SVM model* so that users can interact and use the model with ease. 
 - To make the API work I have used the **Flask** library which are mostly used for such tasks.
 - I have also connected a **HTML** form to the flask app to take in user input and a **CSS** file to decorate it.<br>
-### Deployment:
+### <h3 id="deployment">Deployment:</h3>
 - The Flask API was deployed on the **Heroku** cloud platform so that anyone with the link to the app can access it online.
 - I have connected this GitHub repository to the Heroku dyno so that it can be run on the cloud.
 - I have used the **Gunicorn** package which lets Python applications run on any web server. The `Procfile` and `requirements.txt` should be defined with all the details required before the deployment.<br>
-### What did I learn:
+### <h3 id="learn">What did I learn:</h3>
 - *Data Wrangling* using **Pandas**
 - *Feature Engineering* to fit our data to our model
 - Selecting the right model using *cross-validation*
@@ -87,3 +93,4 @@
 - A little frontend web development
 - Making the app live by deploying it on cloud platforms 
 
+<button><a href="#top">Back to Top</a></button>
